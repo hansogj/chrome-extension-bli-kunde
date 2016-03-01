@@ -1,0 +1,17 @@
+{
+  "name": "Bli Kunde Autofill",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Autofill bli kunde skjam",
+  "icons": { "64": "eika.png" },
+  "web_accessible_resources": ["https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js","autofill.js"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/privat/blikunde",
+                  "http://*/privat/blikunde",
+                  "https://*/dagligbank-bli_kunde-nettbank-web/",
+                  "http://*/dagligbank-bli_kunde-nettbank-web/"],
+      "js": ["blikunde.js"]
+    }
+  ]
+}
