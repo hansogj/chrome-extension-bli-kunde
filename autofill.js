@@ -42,19 +42,21 @@ window.eika = window.eika || {};
     }
   }
 
-  function setAhvSkjema(model) {
-    model.skjema.sider.forEach(function(side) {
-      side.seksjon.forEach(function(seksjon) {
-        seksjon.sporsmalListe.sporsmal.forEach(function(spm) {
-          if (spm.sporsmalsType === "radio") {
-            spm.valgt = spm.muligeSvar[1].svarId
-          }
-          if (spm.sporsmalsType === "checkbox") {
-            spm.muligeSvar[1].valgt = true;
-          }
+  function setAhvSkjema(skjema) {
+    if (skjema && skjema.sider) {
+      skjema.sider.forEach(function(side) {
+        side.seksjon.forEach(function(seksjon) {
+          seksjon.sporsmalListe.sporsmal.forEach(function(spm) {
+            if (spm.sporsmalsType === "radio") {
+              spm.valgt = spm.muligeSvar[1].svarId
+            }
+            if (spm.sporsmalsType === "checkbox") {
+              spm.muligeSvar[1].valgt = true;
+            }
+          });
         });
       });
-    });
+    }
   }
 
   function setProduktPakker(model) {
@@ -74,10 +76,11 @@ window.eika = window.eika || {};
   function autofill(click) {
     var element = angular.element(document.querySelectorAll('.eika [ui-view="main"]')),
         scope = element.scope(),
-        model = scope.model;
+        model = scope.model,
+        skjema = scope.model.skjema || scope.skjema;
 
     setPersonalia(model);
-    setAhvSkjema(model);
+    setAhvSkjema(skjema);
     scope.$apply();
 
     if(click) {
