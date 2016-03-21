@@ -79,9 +79,9 @@ window.eika = window.eika || {};
         model = scope.model,
         skjema = scope.model.skjema || scope.skjema;
 
-    setPersonalia(model);
-    setAhvSkjema(skjema);
-    scope.$apply();
+debugger;
+    scope.$apply(setPersonalia.bind(this, model));
+    scope.$apply(setAhvSkjema.bind(this, skjema));
 
     if(click) {
       element.find("button.btn-primary" ).click()
