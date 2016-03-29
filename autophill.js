@@ -79,7 +79,6 @@ window.eika = window.eika || {};
         model = scope.model,
         skjema = scope.model.skjema || scope.skjema;
 
-debugger;
     scope.$apply(setPersonalia.bind(this, model));
     scope.$apply(setAhvSkjema.bind(this, skjema));
 
