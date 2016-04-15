@@ -67,9 +67,20 @@ window.eika = window.eika || {};
 
   function setPersonalia (model ) {
     getUser(function (user) {
-      var personalia= validationKeys.map(function (key) {return user[key];});
-      model.sporsmalList
-        .forEach(function(e, i) {e.svar = personalia[i];})
+      var personalia= validationKeys
+            .map(function (key) {return user[key];});
+
+      if(model && model.sporsmalList) {
+        model.sporsmalList
+          .forEach(function(e, i) {
+            var value = personalia[i];
+
+            if(i === 3){
+              value = value * 1
+            };
+            e.svar = value
+          });
+      }
     });
   }
 
@@ -77,7 +88,7 @@ window.eika = window.eika || {};
     var element = angular.element(document.querySelectorAll('.eika [ui-view="main"]')),
         scope = element.scope(),
         model = scope.model,
-        skjema = scope.model.skjema || scope.skjema;
+        skjema = scope.skjema || scope.model.skjema;
 
     scope.$apply(setPersonalia.bind(this, model));
     scope.$apply(setAhvSkjema.bind(this, skjema));
