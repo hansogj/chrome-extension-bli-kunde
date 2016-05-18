@@ -7,6 +7,38 @@ window.eika = window.eika || {};
 
   var validationKeys = ["fornavn", "etternavn", "epost", "mobil", "fnr"];
   var KEY = "EIKA_AUTOPHILL";
+  var apiTemplate = "/dagligbank-bli_kunde-domene-ws/rest/admin/resource/configs/XXX/value";
+
+function getApiUrl(json) {
+  //http://localhost:8081/dagligbank-bli_kunde-domene-ws/rest/admin/resource/configs/USE_SDC_KERNE_BACKEND/value
+  return apiTemplate.replace("XXX", json.property);
+
+}
+
+
+function post(json) {
+  var newName = 'John Smith',
+      xhr = new XMLHttpRequest();
+
+  xhr.open('POST',encodeURI(getApiUrl(json)), true);
+  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+  xhr.onload = function() {
+    if (xhr.status !== 204) {
+      console.error('Request failed.  Returned status of ' + xhr.status, xhr);
+    }
+  };
+  xhr.send(JSON.stringify(json));
+}
+
+
+
+function setDomeneWsFalseValues() {
+  ["USE_SDC_KERNE_BACKEND", "USE_AHVRISK_BACKEND", "USE_DSF_BACKEND", "USE_KREDITTSCORING_BACKEND",
+   "USE_CRM_WHITELIST_BACKEND", "USE_GEOGRAFI_DB", "USE_SAMTYKKE_BACKEND"]
+  .map(function (prop) {
+    post({"property": prop,"newValue":"false"});
+  });
+}
 
   function getUser(cb) {
     var storedObject = JSON.parse(localStorage.getItem(KEY)) || {};
@@ -98,6 +130,7 @@ window.eika = window.eika || {};
     }
   }
 
+  eika.setDomeneWsFalseValues = setDomeneWsFalseValues;
   eika.getUser = getUser;
   eika.setUser = function (user) {
     saveUser(user);

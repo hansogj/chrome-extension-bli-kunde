@@ -11,6 +11,7 @@
                   "https://*/dagligbank-bli_kunde-nettbank-web/",
                   "https://harstad-sparebank.test.eika.no/*",
                   "http://*/privat/blikunde",
+                  "http://*/dagligbank-bli_kunde-domene-ws/",
                   "http://*/dagligbank-bli_kunde-nettbank-web/",
                   "http://harstad-sparebank.test.eika.no/*"
                  ],
