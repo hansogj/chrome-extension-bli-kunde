@@ -4,15 +4,18 @@
   "manifest_version": 2,
   "description": "Autofill bli kunde skjam",
   "icons": { "64": "eika.png" },
-  "web_accessible_resources": ["https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js","autophill.js"],
+  "web_accessible_resources": [
+    "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js",
+    "autophill.js",
+    "setDomeneWsFalseValues.js"],
   "content_scripts": [
     {
       "matches": ["https://*/privat/blikunde",
-                  "https://*/dagligbank-bli_kunde-nettbank-web/",
+                  "https://*/dagligbank-bli_kunde-nettbank-web/*",
                   "https://harstad-sparebank.test.eika.no/*",
                   "http://*/privat/blikunde",
                   "http://*/dagligbank-bli_kunde-domene-ws/",
-                  "http://*/dagligbank-bli_kunde-nettbank-web/",
+                  "http://*/dagligbank-bli_kunde-nettbank-web/*",
                   "http://harstad-sparebank.test.eika.no/*"
                  ],
       "js": ["blikunde.js"]
