@@ -85,7 +85,7 @@ window.eika = window.eika || {};
   }
 
   function autofill(click) {
-    var element = angular.element(document.querySelectorAll('.eika [ui-view="main"]')),
+    var element = angular.element(document.querySelectorAll('.eika [ui-view="main"], [ui-view="s1"] ')),
         scope = element.scope(),
         model = scope.model,
         skjema = scope.skjema || scope.model.skjema;

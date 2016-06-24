@@ -12,10 +12,12 @@
     {
       "matches": ["https://*/privat/blikunde",
                   "https://*/dagligbank-bli_kunde-nettbank-web/*",
+                  "https://*/felles-antihvitvask-portal-intraweb/*",
                   "https://harstad-sparebank.test.eika.no/*",
                   "http://*/privat/blikunde",
                   "http://*/dagligbank-bli_kunde-domene-ws/",
                   "http://*/dagligbank-bli_kunde-nettbank-web/*",
+                  "http://*/felles-antihvitvask-portal-intraweb/*",
                   "http://harstad-sparebank.test.eika.no/*"
                  ],
       "js": ["blikunde.js"]
