@@ -85,11 +85,10 @@ window.eika = window.eika || {};
   }
 
   function autofill(click) {
-    var element = angular.element(document.querySelectorAll('.eika [ui-view="main"], [ui-view="s1"] ')),
+    var element = angular.element(document.querySelectorAll('.eika [ui-view="main"], [ui-view="s1"], .eika #article ui-view ')),
         scope = element.scope(),
-        model = scope.model,
+        model = scope.model || {},
         skjema = scope.skjema || scope.model.skjema;
-
     scope.$apply(setPersonalia.bind(this, model));
     scope.$apply(setAhvSkjema.bind(this, skjema));
 

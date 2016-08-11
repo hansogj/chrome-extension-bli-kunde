@@ -1,4 +1,3 @@
-
 ['autophill.js', 'setDomeneWsFalseValues.js'].forEach(function(resource) {
   var s = document.createElement('script');
   s.src = chrome.extension.getURL(resource);
