@@ -84,8 +84,20 @@ window.eika = window.eika || {};
     });
   }
 
+  function findElement() {
+
+    return document.querySelector([
+      '.eika [ui-view="main"]', //bk-kulepunkt
+      '.eika [ui-view="content"]',
+      '[ui-view="s1"]', //ahv
+      '.eika #article ui-view', // ahv-nettbank
+      '.eika .card-list-process-item.open [ui-view]' //bk-progress
+    ].join(', '));
+  }
+
+
   function autofill(click) {
-    var element = angular.element(document.querySelectorAll('.eika [ui-view="main"], [ui-view="s1"], .eika #article ui-view ')),
+    var element = angular.element(findElement()),
         scope = element.scope(),
         model = scope.model || {},
         skjema = scope.skjema || scope.model.skjema;
@@ -93,7 +105,13 @@ window.eika = window.eika || {};
     scope.$apply(setAhvSkjema.bind(this, skjema));
 
     if(click) {
-      element.find("button.btn-primary" ).click()
+      if (element.find("button.btn-primary").length) {
+        element.find("button.btn-primary").click();
+      } else {
+        var evt = document.createEvent('MouseEvents');
+        evt.initEvent('click', true, false);
+        document.querySelector("footer button.btn-primary").dispatchEvent(evt);
+      }
     }
   }
 

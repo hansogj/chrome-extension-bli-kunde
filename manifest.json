@@ -16,6 +16,7 @@
                   "*://*/dagligbank-bli_kunde-domene-ws/",
                   "*://*/felles-antihvitvask-portal-intraweb/*",
                   "*://harstad-sparebank.test.eika.no/*",
+                  "*://*/nettbank-component-web/",
                   "*://*/antihvitvask-nettbank/"
                  ],
       "js": ["blikunde.js"]
